@@ -1,3 +1,7 @@
-#heading {
+#child_1 > * {
   color: royalblue;
+}
+
+#child_2 > * {
+  color: red;
 }
