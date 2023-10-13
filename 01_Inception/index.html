@@ -6,8 +6,12 @@
     <title>Inception - Namaste React</title>
   </head>
   <body>
-    <div id="root">
-      <h1>Hello World !</h1>
-    </div>
+    <div id="root"></div>
+    <script>
+      const container = document.getElementById("root");
+      const heading = document.createElement("h1");
+      heading.innerText = "Hello World from Javascript !";
+      container.appendChild(heading);
+    </script>
   </body>
 </html>
