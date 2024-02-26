@@ -1,0 +1,19 @@
+{
+  "name": "02_ignition",
+  "version": "1.0.0",
+  "description": "igniting our app with parcel",
+  "main": "index.html",
+  "scripts": {
+    "build": "parcel build",
+    "start": "parcel"
+  },
+  "author": "sahil-jassal",
+  "license": "MIT",
+  "devDependencies": {
+    "parcel": "^2.11.0"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
