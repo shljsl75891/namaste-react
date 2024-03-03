@@ -18,11 +18,16 @@ const container = React.createElement("div", { className: "title" }, [
   </div>
 ); */
 
+const Greeting = () => {
+  return <p>Hello, world!</p>;
+};
+
 const Container = () => (
   <div className="title">
     <h1>Heading1</h1>
     <h2>Heading2</h2>
     <h3>Heading3</h3>
+    <Greeting />
   </div>
 );
 
