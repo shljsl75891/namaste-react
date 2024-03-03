@@ -10,7 +10,15 @@ const container = React.createElement("div", { className: "title" }, [
   React.createElement("h3", {}, "Heading3"),
 ]); */
 
-const container = (
+/* const container = (
+  <div className="title">
+    <h1>Heading1</h1>
+    <h2>Heading2</h2>
+    <h3>Heading3</h3>
+  </div>
+); */
+
+const Container = () => (
   <div className="title">
     <h1>Heading1</h1>
     <h2>Heading2</h2>
@@ -20,4 +28,4 @@ const container = (
 
 const root = ReactDOM.createRoot(mainContainer);
 
-root.render(container);
+root.render(<Container />);
