@@ -6,7 +6,7 @@ JSX is a syntax extension for JavaScript that lets you write HTML-like markup in
 
 ### Difference between React.createElement vs JSX
 
-JSX behind the scenes is `React.createElement`. It is just a syntactical sugar as developers prefer the conciseness of JSX, and most codebases use it. Babel transpiles the modern JSX syntax to the version which React understands i.e. `React.createElement`.
+React Elements are the smallest building blocks of React apps. Unlike browser DOM elements, React elements are plain objects, and are cheap to create. React DOM takes care of updating the DOM to match the React elements. JSX behind the scenes is `React.createElement`. It is just a syntactical sugar as developers prefer the conciseness of JSX, and most codebases use it. Babel transpiles the modern JSX syntax to the version which React understands i.e. `React.createElement`.
 
 ### Benefits of JSX
 
