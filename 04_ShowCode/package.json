@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Talk is cheap, show me the code",
   "scripts": {
-    "build": "parcel build index.html",
-    "start": "parcel index.html"
+    "build": "parcel build src/index.html",
+    "start": "parcel src/index.html"
   },
   "dependencies": {
     "react": "^18.2.0",
