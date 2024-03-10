@@ -79,7 +79,7 @@ function Greeting() {
 
 ### What is Reconciliation ?
 
-The virtual DOM (VDOM) is a programming concept where an ideal, or “virtual”, representation of a UI is kept in memory and synced with the “real” DOM by a library such as ReactDOM. This process is called reconciliation.
+The virtual DOM (VDOM) is a programming concept where an ideal, or “virtual”, representation of a UI is kept in memory and synced with the “real” DOM by a library such as ReactDOM. This process of finding out the difference between actual DOM and virtual DOM is called reconciliation. In Modern React, virtual DOM is considered as [Render Trees](https://react.dev/learn/understanding-your-ui-as-a-tree)
 
 ### What is React Fiber ?
 
@@ -108,7 +108,7 @@ Fiber is the new reconciliation engine in React 16. Its main goal is to enable i
 - A well-chosen key provides more information than the position within the array. Even if the position changes due to reordering, the key lets React identify the item throughout its lifetime.
 - Using indexes as keys has no advantages, as if order of items changes, or a new item is added, or an item is deleted, all react nodes's indices also change which violates the 2nd rule of keys in react.
 
-### What is props in React?
+### What are props in React?
 
 React props are just properties that are given to React component to send dynamic data to react components. As functional components are normal javascript functions, props is also a fancy terms for sending arguments to normal functions.
 
@@ -121,3 +121,11 @@ In Configuration-driven UI, also known as config-driven UI or configuration-base
 - The layout, styles, and other properties of UI elements are defined in a configuration file or database, which can be easily modified without requiring changes to the codebase. This approach makes it easier to customize the UI for different use cases or user groups, without the need for extensive coding.
 
 - The configuration file or database may also define the data sources and the data to be displayed in the UI, as well as the interactions and behavior of the UI components. This allows for greater flexibility and adaptability of the UI to different use cases, as the configuration data can be easily modified or replaced without affecting the underlying application logic
+
+## **Why React is so fast ? in my own words** [Reference](https://react.dev/learn/preserving-and-resetting-state)
+
+- React is fast because of its core efficient and performant diff. algortithm - React Fiber
+- React creates a virtual dom of whole HTML dom in memory, because finding out the difference between two HTML doms and manipulating it in the browser on the go is very heavy and inefficient. So, react creates a virtual DOM of fiber nodes made up of react elements (normal JS objects) in memory, which is representation of actual DOM of html nodes which the browser paints.
+- Then, on every interaction on UI, React triggers its core algortithm by the help of setState dispatch actions, after which react creates a new copy of VDOM, and do all manipulations on it. Then, compares the new virtual dom with previous virtual dom and then only, ReactDOM changes that final difference in the required part of actual HTML DOM using native DOM Manipulation Web APIs, which can easily be repainted by browser performantly.
+- React use `type` as string for html elements and functions for react components in its render tree. Using this, react understands which is reusable and which needs to change.
+- React makes sure, that it needs to touch the HTML DOM as less as it can and do all manipulations on virtual dom before-hand and then, only re-render the actual dom. Thus, it keeps the UI layer and data layer in sync smoothly.
