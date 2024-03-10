@@ -1,0 +1,3 @@
+[submodule "yum-yard"]
+	path = yum-yard
+	url = git@personal.github.com:shljsl75891/yum-yard.git
