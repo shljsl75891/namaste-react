@@ -117,15 +117,19 @@ React props are just properties that are given to React component to send dynami
 In Configuration-driven UI, also known as config-driven UI or configuration-based UI:
 
 - We can build our UI, according to different configurations based on different places. It will be based on data coming from Backend API. Some places would have different preferences, so, the look of website will be driven by configuration sent by the API. For eg. in Swiggy API, we need to send latitudes and longtitudes, and the data, and image CDNs are sent according to that.
-
 - The layout, styles, and other properties of UI elements are defined in a configuration file or database, which can be easily modified without requiring changes to the codebase. This approach makes it easier to customize the UI for different use cases or user groups, without the need for extensive coding.
-
 - The configuration file or database may also define the data sources and the data to be displayed in the UI, as well as the interactions and behavior of the UI components. This allows for greater flexibility and adaptability of the UI to different use cases, as the configuration data can be easily modified or replaced without affecting the underlying application logic
 
-## **Why React is so fast ? in my own words** [Reference](https://react.dev/learn/preserving-and-resetting-state)
+#### What does render means in React ? [Reference](https://react.dev/learn/render-and-commit)
+
+Render in react means invoking the functional components (not painting the actual HTML DOM in browser).
+
+- On initial render, React will call the root component and creates DOM Nodes using native DOM manipulation such as [`createElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement) and [`appendChild`](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild).
+- For subsequent renders, React will call the function component whose state update triggered the render. React will calculate which of the properties, if any, have changed since the previous render.
+
+### Why React is so fast ?[Reference](https://react.dev/learn/preserving-and-resetting-state)
 
 - React is fast because of its core efficient and performant diff. algortithm - React Fiber
-- React creates a virtual dom of whole HTML dom in memory, because finding out the difference between two HTML doms and manipulating it in the browser on the go is very heavy and inefficient. So, react creates a virtual DOM of fiber nodes made up of react elements (normal JS objects) in memory, which is representation of actual DOM of html nodes which the browser paints.
-- Then, on every interaction on UI, React triggers its core algortithm by the help of setState dispatch actions, after which react creates a new copy of VDOM, and do all manipulations on it. Then, compares the new virtual dom with previous virtual dom and then only, ReactDOM changes that final difference in the required part of actual HTML DOM using native DOM Manipulation Web APIs, which can easily be repainted by browser performantly.
-- React use `type` as string for html elements and functions for react components in its render tree. Using this, react understands which is reusable and which needs to change.
-- React makes sure, that it needs to touch the HTML DOM as less as it can and do all manipulations on virtual dom before-hand and then, only re-render the actual dom. Thus, it keeps the UI layer and data layer in sync smoothly.
+- React first do normal DOM manipulation, and creates a virtual DOM of actual DOM in form of React element (A Big JS Object).
+- On subsequent re-renders, react calculates the difference between virtual DOMs after re-render and previous render.
+- Then, only do DOM manipulation of the calculated difference. But, the functional component is re-rendered (invoked) as a whole, each and every variable or function is recreated (except explicity memoized references).
